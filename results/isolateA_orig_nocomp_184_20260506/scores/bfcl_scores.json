@@ -1,0 +1,86 @@
+{
+  "run_dir": "/root/bfcl_long_context_sp_bench/results/isolateA_orig_nocomp_184_20260506",
+  "data_file": "/root/gorilla/berkeley-function-call-leaderboard/bfcl_eval/data/BFCL_v4_multi_turn_long_context.json",
+  "samples": 1,
+  "correct": 0,
+  "accuracy": 0.0,
+  "entries": [
+    {
+      "id": "multi_turn_long_context_184",
+      "valid": false,
+      "score": 0,
+      "result_turns": 6,
+      "ground_truth_turns_original": 6,
+      "ground_truth_turns_eval": 6,
+      "synthetic_ground_truth_padding_turns": 0,
+      "error_type": "multi_turn:instance_state_mismatch",
+      "error_message": "Model instance for MessageAPI does not match the state with ground truth instance.",
+      "details": {
+        "differences": {
+          "inbox": {
+            "model": [
+              {
+                "USR006": [
+                  "Hey Lara, let me know if you need any help with your travel plans."
+                ]
+              },
+              {
+                "USR006": "Hi Sam, my travel plans have changed. I"
+              }
+            ],
+            "ground_truth": [
+              {
+                "USR006": [
+                  "Hey Lara, let me know if you need any help with your travel plans."
+                ]
+              },
+              {
+                "USR006": "Hi Sam, my travel plans have changed. I'll update you soon."
+              }
+            ]
+          }
+        },
+        "model_instance_state": {
+          "generated_ids": "{67410}",
+          "user_count": 5,
+          "user_map": {
+            "Lara": "USR005",
+            "Sam": "USR006"
+          },
+          "inbox": [
+            {
+              "USR006": [
+                "Hey Lara, let me know if you need any help with your travel plans."
+              ]
+            },
+            {
+              "USR006": "Hi Sam, my travel plans have changed. I"
+            }
+          ],
+          "message_count": 2,
+          "current_user": "USR005"
+        },
+        "ground_truth_instance_state": {
+          "generated_ids": "{67410}",
+          "user_count": 5,
+          "user_map": {
+            "Lara": "USR005",
+            "Sam": "USR006"
+          },
+          "inbox": [
+            {
+              "USR006": [
+                "Hey Lara, let me know if you need any help with your travel plans."
+              ]
+            },
+            {
+              "USR006": "Hi Sam, my travel plans have changed. I'll update you soon."
+            }
+          ],
+          "message_count": 2,
+          "current_user": "USR005"
+        }
+      }
+    }
+  ]
+}

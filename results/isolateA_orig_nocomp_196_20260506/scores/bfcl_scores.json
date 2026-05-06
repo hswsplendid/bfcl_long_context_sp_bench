@@ -1,0 +1,98 @@
+{
+  "run_dir": "/root/bfcl_long_context_sp_bench/results/isolateA_orig_nocomp_196_20260506",
+  "data_file": "/root/gorilla/berkeley-function-call-leaderboard/bfcl_eval/data/BFCL_v4_multi_turn_long_context.json",
+  "samples": 1,
+  "correct": 0,
+  "accuracy": 0.0,
+  "entries": [
+    {
+      "id": "multi_turn_long_context_196",
+      "valid": false,
+      "score": 0,
+      "result_turns": 5,
+      "ground_truth_turns_original": 5,
+      "ground_truth_turns_eval": 5,
+      "synthetic_ground_truth_padding_turns": 0,
+      "error_type": "multi_turn:instance_state_mismatch",
+      "error_message": "Model instance for TicketAPI does not match the state with ground truth instance.",
+      "details": {
+        "differences": {
+          "ticket_queue": {
+            "model": [
+              {
+                "id": 1,
+                "title": "Cancellation Issue",
+                "description": "Error encountered during flight cancellation process",
+                "status": "Open"
+              },
+              {
+                "id": 2,
+                "title": "Cancellation Issue",
+                "description": "Error encountered during flight cancellation process. Error details: Booking not found",
+                "status": "Open",
+                "priority": 1,
+                "created_by": "Michael Thompson"
+              }
+            ],
+            "ground_truth": [
+              {
+                "id": 1,
+                "title": "Cancellation Issue",
+                "description": "Error encountered during flight cancellation process",
+                "status": "Open"
+              },
+              {
+                "id": 2,
+                "title": "Cancellation Issue",
+                "description": "Error encountered during flight cancellation process.",
+                "status": "Open",
+                "priority": 1,
+                "created_by": "Michael Thompson"
+              }
+            ]
+          }
+        },
+        "model_instance_state": {
+          "ticket_queue": [
+            {
+              "id": 1,
+              "title": "Cancellation Issue",
+              "description": "Error encountered during flight cancellation process",
+              "status": "Open"
+            },
+            {
+              "id": 2,
+              "title": "Cancellation Issue",
+              "description": "Error encountered during flight cancellation process. Error details: Booking not found",
+              "status": "Open",
+              "priority": 1,
+              "created_by": "Michael Thompson"
+            }
+          ],
+          "ticket_counter": 3,
+          "current_user": "Michael Thompson"
+        },
+        "ground_truth_instance_state": {
+          "ticket_queue": [
+            {
+              "id": 1,
+              "title": "Cancellation Issue",
+              "description": "Error encountered during flight cancellation process",
+              "status": "Open"
+            },
+            {
+              "id": 2,
+              "title": "Cancellation Issue",
+              "description": "Error encountered during flight cancellation process.",
+              "status": "Open",
+              "priority": 1,
+              "created_by": "Michael Thompson"
+            }
+          ],
+          "ticket_counter": 3,
+          "current_user": "Michael Thompson"
+        }
+      }
+    }
+  ]
+}

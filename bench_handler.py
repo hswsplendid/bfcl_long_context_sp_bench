@@ -46,6 +46,7 @@ def run_dirs(run_name: str) -> dict:
         "traces": base / "traces",
         "abc": base / "abc_segments",
         "timing": base / "timing",
+        "model_results": base / "model_results",
         "prompt_logs": base / "prompt_logs",
         "checkpoints": base / "checkpoints",
         "config_file": base / "run_config.json",
@@ -161,9 +162,16 @@ def _extract_price_from_stock_info(result: str) -> float | None:
 
 
 class BFCLLongContextSemiPrefillBench:
-    def __init__(self, run_name: str, preset: dict, model_key: str = CFG.DEFAULT_MODEL):
+    def __init__(
+        self,
+        run_name: str,
+        preset: dict,
+        model_key: str = CFG.DEFAULT_MODEL,
+        compression_enabled: bool = True,
+    ):
         self.run_name = run_name
         self.preset = preset
+        self.compression_enabled = compression_enabled
         self.model_key = model_key
         self.model_info = CFG.MODEL_REGISTRY[model_key]
         self.model_path = self.model_info["model_path"]
@@ -302,6 +310,16 @@ class BFCLLongContextSemiPrefillBench:
                 indent=2,
                 ensure_ascii=False,
             )
+        with open(self.dirs["model_results"] / f"{sample_id}.json", "w", encoding="utf-8") as handle:
+            json.dump(
+                {
+                    "id": sample_id,
+                    "result": state.get("official_model_result", []),
+                },
+                handle,
+                indent=2,
+                ensure_ascii=False,
+            )
 
     def _save_checkpoint(self, state: dict, test_entry: dict) -> None:
         payload = {
@@ -314,6 +332,7 @@ class BFCLLongContextSemiPrefillBench:
             "abc_snapshots": state["abc_snapshots"],
             "prompt_snapshots": state["prompt_snapshots"],
             "turn_traces": state["turn_traces"],
+            "official_model_result": state.get("official_model_result", []),
             "executed_calls_history": state["executed_calls_history"],
             "cumulative_tool_calls": state["cumulative_tool_calls"],
             "previous_summary": state.get("previous_summary"),
@@ -357,6 +376,8 @@ class BFCLLongContextSemiPrefillBench:
             )
 
     def _maybe_compress(self, state: dict) -> None:
+        if not self.compression_enabled:
+            return
         total_tokens = self.prompt_tokens(state["messages"], state["tools"])
         if not should_compact(total_tokens, self.preset["context_window"], self.preset["reserve_tokens"]):
             return
@@ -873,6 +894,7 @@ class BFCLLongContextSemiPrefillBench:
         if checkpoint is not None:
             state = checkpoint
             state["resume_count"] = state.get("resume_count", 0) + 1
+            state.setdefault("official_model_result", [])
             return state
         return {
             "sample_id": test_entry["id"],
@@ -884,6 +906,7 @@ class BFCLLongContextSemiPrefillBench:
             "abc_snapshots": [],
             "prompt_snapshots": [],
             "turn_traces": [],
+            "official_model_result": [],
             "executed_calls_history": [],
             "cumulative_tool_calls": 0,
             "previous_summary": None,
@@ -927,6 +950,8 @@ class BFCLLongContextSemiPrefillBench:
                 state["messages"].extend(current_turn_message)
                 if turn_idx > 0:
                     self._maybe_compress(state)
+                while len(state["official_model_result"]) <= turn_idx:
+                    state["official_model_result"].append([])
                 state["turn_traces"].append(
                     {
                         "turn": turn_idx,
@@ -937,6 +962,7 @@ class BFCLLongContextSemiPrefillBench:
 
             while True:
                 response, timing = self._stream_query(state)
+                state["official_model_result"][turn_idx].append(deepcopy(response["model_responses"]))
                 state["timing_log"].append(timing)
                 prepared_execution = self._prepare_market_price_execution(
                     response,

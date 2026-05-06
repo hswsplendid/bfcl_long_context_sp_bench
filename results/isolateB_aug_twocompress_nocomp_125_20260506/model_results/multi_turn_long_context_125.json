@@ -1,0 +1,21 @@
+{
+  "id": "multi_turn_long_context_125",
+  "result": [
+    [
+      [
+        {
+          "get_watchlist": "{}"
+        }
+      ],
+      "The function call with its proper arguments that best answers the given prompt is:\n\n{\"name\": \"get_watchlist\", \"parameters\": {}}"
+    ],
+    [
+      [
+        {
+          "place_order": "{\"order_type\": \"Buy\", \"symbol\": \"ALPH\", \"price\": \"current_price\", \"amount\": \"100\"}"
+        }
+      ],
+      "The function call with its proper arguments that best answers the given prompt is:\n\n{\"name\": \"place_order\", \"parameters\": {\"order_type\": \"Buy\", \"symbol\": \"GOOGL\", \"price\": \"current_price\", \"amount\": \"100\"}}"
+    ]
+  ]
+}

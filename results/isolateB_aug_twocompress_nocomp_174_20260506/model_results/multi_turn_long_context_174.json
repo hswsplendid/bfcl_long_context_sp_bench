@@ -1,0 +1,45 @@
+{
+  "id": "multi_turn_long_context_174",
+  "result": [
+    [
+      [
+        {
+          "book_flight": "{\"card_id\": \"card_7243\", \"access_token\": \"abc123xyz\", \"travel_date\": \"2026-10-10\", \"travel_from\": \"SFO\", \"travel_to\": \"FCO\", \"travel_class\": \"business\"}"
+        }
+      ],
+      [
+        {
+          "get_nearest_airport_by_city": "{\"location\": \"Rome\"}"
+        }
+      ],
+      [
+        {
+          "get_flight_cost": "{\"travel_from\": \"SFO\", \"travel_to\": \"CIA\", \"travel_date\": \"2026-10-10\", \"travel_class\": \"business\"}"
+        }
+      ],
+      [
+        {
+          "compute_exchange_rate": "{\"base_currency\": \"USD\", \"target_currency\": \"EUR\", \"value\": \"1000\"}"
+        }
+      ],
+      "The cost of the flight from San Francisco to Rome on October 10th, 2026, in business class, is between $800 and $4000. The nearest airport to Rome is CIA. The cost of the flight in EUR is between €640 and €3200."
+    ],
+    [
+      [
+        {
+          "purchase_insurance": "{\"access_token\": \"abc123xyz\", \"insurance_type\": \"travel\", \"insurance_cost\": \"150\", \"booking_id\": \"booking_123\", \"card_id\": \"card_7243\"}"
+        }
+      ],
+      [
+        {
+          "book_flight": "{\"card_id\": \"card_7243\", \"access_token\": \"abc123xyz\", \"travel_date\": \"2026-10-10\", \"travel_from\": \"SFO\", \"travel_to\": \"CIA\", \"travel_class\": \"business\"}"
+        }
+      ],
+      [
+        {
+          "purchase_insurance": "{\"access_token\": \"abc123xyz\", \"insurance_type\": \"travel\", \"insurance_cost\": \"150\", \"booking_id\": \"3426812\", \"card_id\": \"card_7243\"}"
+        }
+      ]
+    ]
+  ]
+}

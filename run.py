@@ -111,7 +111,14 @@ def maybe_prepare_data(args) -> None:
     print(f"[prepare-data] wrote {len(rows)} samples -> {args.data_file}")
 
 
-def write_run_meta(run_name: str, preset: dict, sample_ids: list[str], model_key: str, data_file: Path) -> None:
+def write_run_meta(
+    run_name: str,
+    preset: dict,
+    sample_ids: list[str],
+    model_key: str,
+    data_file: Path,
+    compression_enabled: bool = True,
+) -> None:
     dirs = run_dirs(run_name)
     dirs["base"].mkdir(parents=True, exist_ok=True)
     with open(dirs["config_file"], "w", encoding="utf-8") as handle:
@@ -122,6 +129,7 @@ def write_run_meta(run_name: str, preset: dict, sample_ids: list[str], model_key
                 "data_file": str(data_file),
                 "proxy_url": CFG.PROXY_URL,
                 "preset": preset,
+                "compression_enabled": compression_enabled,
                 "targets": {
                     "p_max_1_5": CFG.P_TARGET_1_5,
                     "p_max_1_6": CFG.P_TARGET_1_6,
@@ -136,10 +144,23 @@ def write_run_meta(run_name: str, preset: dict, sample_ids: list[str], model_key
         json.dump(sample_ids, handle, indent=2)
 
 
-def run_once(run_name: str, preset_name: str, sample_ids: list[str], force: bool, model_key: str, data_file: Path) -> None:
+def run_once(
+    run_name: str,
+    preset_name: str,
+    sample_ids: list[str],
+    force: bool,
+    model_key: str,
+    data_file: Path,
+    compression_enabled: bool = True,
+) -> None:
     preset = resolve_preset(preset_name)
-    write_run_meta(run_name, preset, sample_ids, model_key, data_file)
-    bench = BFCLLongContextSemiPrefillBench(run_name, preset, model_key=model_key)
+    write_run_meta(run_name, preset, sample_ids, model_key, data_file, compression_enabled=compression_enabled)
+    bench = BFCLLongContextSemiPrefillBench(
+        run_name,
+        preset,
+        model_key=model_key,
+        compression_enabled=compression_enabled,
+    )
     dataset = load_dataset(data_file)
 
     summaries = []
@@ -167,7 +188,15 @@ def cmd_search(args):
     presets = args.presets or [preset[0] for preset in CFG.PRESETS]
     sample_ids = CFG.SEARCH_SAMPLE_IDS[: args.limit] if args.limit else list(CFG.SEARCH_SAMPLE_IDS)
     for preset in presets:
-        run_once(f"search_{args.model}_{preset}", preset, sample_ids, force=args.force, model_key=args.model, data_file=args.data_file)
+        run_once(
+            f"search_{args.model}_{preset}",
+            preset,
+            sample_ids,
+            force=args.force,
+            model_key=args.model,
+            data_file=args.data_file,
+            compression_enabled=not args.disable_compression,
+        )
 
 
 def cmd_full(args):
@@ -177,7 +206,15 @@ def cmd_full(args):
     if args.limit:
         sample_ids = sample_ids[: args.limit]
     run_name = args.run_name or f"full_{args.model}_{args.preset}"
-    run_once(run_name, args.preset, sample_ids, force=args.force, model_key=args.model, data_file=args.data_file)
+    run_once(
+        run_name,
+        args.preset,
+        sample_ids,
+        force=args.force,
+        model_key=args.model,
+        data_file=args.data_file,
+        compression_enabled=not args.disable_compression,
+    )
 
 
 def main():
@@ -193,6 +230,7 @@ def main():
         run_parser.add_argument("--initial-target-tokens", type=int, default=CFG.AUGMENT_INITIAL_TARGET_TOKENS)
         run_parser.add_argument("--turn-growth-tokens", type=int, default=CFG.AUGMENT_TURN_GROWTH_TOKENS)
         run_parser.add_argument("--min-turns", type=int, default=CFG.AUGMENT_MIN_TURNS)
+        run_parser.add_argument("--disable-compression", action="store_true", help="Run without context compression for isolation checks")
 
     search = sub.add_parser("search")
     add_common(search)
