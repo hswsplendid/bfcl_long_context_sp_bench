@@ -178,5 +178,29 @@
     "total_ms": 13951.82,
     "decode_ms": 0.32,
     "tool_calls_in_response": 1
+  },
+  {
+    "turn": 4,
+    "step": 1,
+    "classification": "incremental",
+    "prompt_tokens": 20394,
+    "tool_schema_tokens": 6955,
+    "output_tokens": 15,
+    "ttft_ms": 13019.89,
+    "total_ms": 13021.54,
+    "decode_ms": 1.64,
+    "tool_calls_in_response": 0
+  },
+  {
+    "turn": 5,
+    "step": 0,
+    "classification": "incremental",
+    "prompt_tokens": 23083,
+    "tool_schema_tokens": 6955,
+    "output_tokens": 29,
+    "ttft_ms": 16288.41,
+    "total_ms": 16290.95,
+    "decode_ms": 2.54,
+    "tool_calls_in_response": 0
   }
 ]

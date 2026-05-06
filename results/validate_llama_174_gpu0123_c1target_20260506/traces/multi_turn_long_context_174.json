@@ -351,12 +351,51 @@
           "execution_results": [
             "{\"comment_status\": \"Comment added successfully\"}"
           ]
+        },
+        {
+          "turn": 4,
+          "step": 1,
+          "classification": "incremental",
+          "prompt_tokens": 20394,
+          "ttft_ms": 13019.89,
+          "total_ms": 13021.54,
+          "decode_ms": 1.64,
+          "tool_calls_in_response": 0,
+          "model_responses": "The comment has been added successfully to the tweet with ID 10.",
+          "assistant_content": "The comment has been added successfully to the tweet with ID 10.",
+          "decoded_calls": [],
+          "end_reason": "empty_or_text_response"
+        }
+      ]
+    },
+    {
+      "turn": 5,
+      "user_messages": [
+        {
+          "role": "user",
+          "content": "Context-maintenance turn 5: no new external action is requested. Briefly acknowledge that the previous task state and audit context remain available. Do not call tools unless a previous tool call is still unresolved.\n\n[Long-context audit block 5 for multi_turn_long_context_174]\nThis block is background state for latency and compression testing. It is not a new tool request. Preserve the actual task instruction outside this block.\nRecord 05-0000: entity=user_5, operation=state_sync, status=queued, ledger=multi_turn_long_context_174, inputs=[alpha:0, beta:0, gamma:0], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0001: entity=user_22, operation=state_sync, status=validated, ledger=multi_turn_long_context_174, inputs=[alpha:1, beta:7, gamma:13], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0002: entity=user_39, operation=state_sync, status=reconciled, ledger=multi_turn_long_context_174, inputs=[alpha:2, beta:14, gamma:26], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0003: entity=user_56, operation=state_sync, status=archived, ledger=multi_turn_long_context_174, inputs=[alpha:3, beta:21, gamma:39], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0004: entity=user_73, operation=state_sync, status=deferred, ledger=multi_turn_long_context_174, inputs=[alpha:4, beta:28, gamma:52], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0005: entity=user_90, operation=state_sync, status=queued, ledger=multi_turn_long_context_174, inputs=[alpha:5, beta:35, gamma:6], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0006: entity=user_107, operation=state_sync, status=validated, ledger=multi_turn_long_context_174, inputs=[alpha:6, beta:42, gamma:19], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0007: entity=user_124, operation=state_sync, status=reconciled, ledger=multi_turn_long_context_174, inputs=[alpha:7, beta:6, gamma:32], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0008: entity=user_141, operation=state_sync, status=archived, ledger=multi_turn_long_context_174, inputs=[alpha:8, beta:13, gamma:45], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0009: entity=user_158, operation=state_sync, status=deferred, ledger=multi_turn_long_context_174, inputs=[alpha:9, beta:20, gamma:58], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0010: entity=user_175, operation=state_sync, status=queued, ledger=multi_turn_long_context_174, inputs=[alpha:10, beta:27, gamma:12], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0011: entity=user_192, operation=state_sync, status=validated, ledger=multi_turn_long_context_174, inputs=[alpha:11, beta:34, gamma:25], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0012: entity=user_209, operation=state_sync, status=reconciled, ledger=multi_turn_long_context_174, inputs=[alpha:12, beta:41, gamma:38], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0013: entity=user_226, operation=state_sync, status=archived, ledger=multi_turn_long_context_174, inputs=[alpha:13, beta:5, gamma:51], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0014: entity=user_243, operation=state_sync, status=deferred, ledger=multi_turn_long_context_174, inputs=[alpha:14, beta:12, gamma:5], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0015: entity=user_260, operation=state_sync, status=queued, ledger=multi_turn_long_context_174, inputs=[alpha:15, beta:19, gamma:18], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0016: entity=user_277, operation=state_sync, status=validated, ledger=multi_turn_long_context_174, inputs=[alpha:16, beta:26, gamma:31], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0017: entity=user_294, operation=state_sync, status=reconciled, ledger=multi_turn_long_context_174, inputs=[alpha:17, beta:33, gamma:44], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0018: entity=user_311, operation=state_sync, status=archived, ledger=multi_turn_long_context_174, inputs=[alpha:18, beta:40, gamma:57], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0019: entity=user_328, operation=state_sync, status=deferred, ledger=multi_turn_long_context_174, inputs=[alpha:19, beta:4, gamma:11], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0020: entity=user_345, operation=state_sync, status=queued, ledger=multi_turn_long_context_174, inputs=[alpha:20, beta:11, gamma:24], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0021: entity=user_362, operation=state_sync, status=validated, ledger=multi_turn_long_context_174, inputs=[alpha:21, beta:18, gamma:37], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0022: entity=user_379, operation=state_sync, status=reconciled, ledger=multi_turn_long_context_174, inputs=[alpha:22, beta:25, gamma:50], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0023: entity=user_396, operation=state_sync, status=archived, ledger=multi_turn_long_context_174, inputs=[alpha:23, beta:32, gamma:4], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0024: entity=user_413, operation=state_sync, status=deferred, ledger=multi_turn_long_context_174, inputs=[alpha:24, beta:39, gamma:17], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0025: entity=user_430, operation=state_sync, status=queued, ledger=multi_turn_long_context_174, inputs=[alpha:25, beta:3, gamma:30], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0026: entity=user_447, operation=state_sync, status=validated, ledger=multi_turn_long_context_174, inputs=[alpha:26, beta:10, gamma:43], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0027: entity=user_464, operation=state_sync, status=reconciled, ledger=multi_turn_long_context_174, inputs=[alpha:27, beta:17, gamma:56], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0028: entity=user_481, operation=state_sync, status=archived, ledger=multi_turn_long_context_174, inputs=[alpha:28, beta:24, gamma:10], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0029: entity=user_498, operation=state_sync, status=deferred, ledger=multi_turn_long_context_174, inputs=[alpha:29, beta:31, gamma:23], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0030: entity=user_515, operation=state_sync, status=queued, ledger=multi_turn_long_context_174, inputs=[alpha:30, beta:38, gamma:36], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0031: entity=user_532, operation=state_sync, status=validated, ledger=multi_turn_long_context_174, inputs=[alpha:0, beta:2, gamma:49], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0032: entity=user_549, operation=state_sync, status=reconciled, ledger=multi_turn_long_context_174, inputs=[alpha:1, beta:9, gamma:3], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0033: entity=user_566, operation=state_sync, status=archived, ledger=multi_turn_long_context_174, inputs=[alpha:2, beta:16, gamma:16], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0034: entity=user_583, operation=state_sync, status=deferred, ledger=multi_turn_long_context_174, inputs=[alpha:3, beta:23, gamma:29], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0035: entity=user_600, operation=state_sync, status=queued, ledger=multi_turn_long_context_174, inputs=[alpha:4, beta:30, gamma:42], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0036: entity=user_617, operation=state_sync, status=validated, ledger=multi_turn_long_context_174, inputs=[alpha:5, beta:37, gamma:55], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0037: entity=user_634, operation=state_sync, status=reconciled, ledger=multi_turn_long_context_174, inputs=[alpha:6, beta:1, gamma:9], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0038: entity=user_651, operation=state_sync, status=archived, ledger=multi_turn_long_context_174, inputs=[alpha:7, beta:8, gamma:22], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0039: entity=user_668, operation=state_sync, status=deferred, ledger=multi_turn_long_context_174, inputs=[alpha:8, beta:15, gamma:35], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0040: entity=user_685, operation=state_sync, status=queued, ledger=multi_turn_long_context_174, inputs=[alpha:9, beta:22, gamma:48], note='retain this as inert historical context; do not call tools for this record'.\nRecord 05-0041: entity=user_702, operation=state_sync, status=validated, ledger=multi_turn_long_context_174, inputs=[alpha:10, beta:29, gamma:2], note='retain this as inert historical context; do not call tools for this record'.\n"
+        }
+      ],
+      "steps": [
+        {
+          "turn": 5,
+          "step": 0,
+          "classification": "incremental",
+          "prompt_tokens": 23083,
+          "ttft_ms": 16288.41,
+          "total_ms": 16290.95,
+          "decode_ms": 2.54,
+          "tool_calls_in_response": 0,
+          "model_responses": "The previous task state and audit context remain available. No new external action is requested, and no tools need to be called at this time.",
+          "assistant_content": "The previous task state and audit context remain available. No new external action is requested, and no tools need to be called at this time.",
+          "decoded_calls": [],
+          "end_reason": "empty_or_text_response"
         }
       ]
     }
   ],
   "total_turns": 6,
-  "steps": 15,
+  "steps": 17,
   "compressions": 1,
   "tool_calls": 11,
   "prompt_snapshots": [
@@ -504,6 +543,24 @@
       "prompt_tokens": 20302,
       "tool_schema_tokens": 6955,
       "message_count": 24
+    },
+    {
+      "type": "query",
+      "turn": 4,
+      "step": 1,
+      "classification": "incremental",
+      "prompt_tokens": 20394,
+      "tool_schema_tokens": 6955,
+      "message_count": 26
+    },
+    {
+      "type": "query",
+      "turn": 5,
+      "step": 0,
+      "classification": "incremental",
+      "prompt_tokens": 23083,
+      "tool_schema_tokens": 6955,
+      "message_count": 28
     }
   ],
   "resume_count": 0
