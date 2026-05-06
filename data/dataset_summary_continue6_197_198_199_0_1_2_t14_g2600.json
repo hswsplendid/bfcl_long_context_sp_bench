@@ -1,0 +1,63 @@
+{
+  "output": "data/BFCL_v4_multi_turn_long_context_sp_continue6_197_198_199_0_1_2_t14_g2600.json",
+  "samples": 6,
+  "preview": [
+    {
+      "id": "multi_turn_long_context_0",
+      "turns": 14,
+      "tool_schema_tokens_est": 5725,
+      "first_turn_message_tokens_est": 20335,
+      "all_user_message_tokens_est": 55045,
+      "model": "Llama-3.3-70B-Instruct"
+    },
+    {
+      "id": "multi_turn_long_context_1",
+      "turns": 14,
+      "tool_schema_tokens_est": 3189,
+      "first_turn_message_tokens_est": 22866,
+      "all_user_message_tokens_est": 57544,
+      "model": "Llama-3.3-70B-Instruct"
+    },
+    {
+      "id": "multi_turn_long_context_2",
+      "turns": 14,
+      "tool_schema_tokens_est": 4807,
+      "first_turn_message_tokens_est": 21201,
+      "all_user_message_tokens_est": 55959,
+      "model": "Llama-3.3-70B-Instruct"
+    },
+    {
+      "id": "multi_turn_long_context_197",
+      "turns": 14,
+      "tool_schema_tokens_est": 5519,
+      "first_turn_message_tokens_est": 20513,
+      "all_user_message_tokens_est": 55253,
+      "model": "Llama-3.3-70B-Instruct"
+    },
+    {
+      "id": "multi_turn_long_context_198",
+      "turns": 14,
+      "tool_schema_tokens_est": 6606,
+      "first_turn_message_tokens_est": 19409,
+      "all_user_message_tokens_est": 54162,
+      "model": "Llama-3.3-70B-Instruct"
+    },
+    {
+      "id": "multi_turn_long_context_199",
+      "turns": 14,
+      "tool_schema_tokens_est": 5519,
+      "first_turn_message_tokens_est": 20496,
+      "all_user_message_tokens_est": 55205,
+      "model": "Llama-3.3-70B-Instruct"
+    }
+  ],
+  "target": {
+    "context_window": 32000,
+    "threshold": 30000,
+    "c1_min": 2000,
+    "c1_min_exclusive": 2000,
+    "c1_diagnostic_max": 3000,
+    "p_max_1_5": 0.2,
+    "p_max_1_6": 0.16666666666666666
+  }
+}

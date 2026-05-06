@@ -1,0 +1,62 @@
+{
+  "id": "multi_turn_long_context_197",
+  "result": [
+    [
+      [
+        {
+          "register_credit_card": "{\"card_number\": \"1432-7890-6543-9876\", \"expiration_date\": \"12/26\", \"access_token\": \"abc123xyz456\", \"card_verification_number\": \"321\", \"cardholder_name\": \"Michael Thompson\"}"
+        }
+      ],
+      [
+        {
+          "purchase_insurance": "{\"insurance_type\": \"comprehensive\", \"insurance_cost\": \"2000\", \"booking_id\": \"insurance_12345\", \"access_token\": \"abc123xyz456\", \"card_id\": \"262919693687\"}"
+        }
+      ],
+      "The provided functions are insufficient for me to complete this task."
+    ],
+    [
+      [
+        {
+          "retrieve_invoice": "{\"access_token\": \"abc123xyz456\", \"booking_id\": \"insurance_12345\"}"
+        }
+      ],
+      "The invoice for the insurance has been retrieved successfully. The invoice details are as follows:\n- Booking ID: insurance_12345\n- Travel Date: 2026-12-24\n- Travel From: SFO\n- Travel To: LAX\n- Travel Class: economy\n- Travel Cost: $9500.0\n- Transaction ID: 12345"
+    ],
+    [
+      "{\"type\": \"function\", \"name\": \"contact_customer_support\", \"parameters\": {\"booking_id\": \"insurance_12345\", \"message\": \"The purchase of travel insurance is blocked due to an error stating \\\\\"Credit card not registered\\\\\", despite successful registration.\"}}"
+    ],
+    [
+      "The previous task state and audit context remain available. No new external action is requested at this time. The conversation will continue when a new task or action is required."
+    ],
+    [
+      "The previous task state and audit context remain available. No new external action is requested at this time. The conversation will continue when a new task or action is required."
+    ],
+    [
+      "The previous task state and audit context remain available. No new external action is requested at this time. The conversation will continue when a new task or action is required."
+    ],
+    [
+      "The previous task state and audit context remain available. No new external action is requested at this time. The conversation will continue when a new task or action is required."
+    ],
+    [
+      "The previous task state and audit context remain available. No new external action is requested at this time. The conversation will continue when a new task or action is required."
+    ],
+    [
+      "The previous task state and audit context remain available. No new external action is requested at this time. The conversation will continue when a new task or action is required."
+    ],
+    [
+      "The previous task state and audit context remain available. No new external action is requested at this time. The conversation will continue when a new task or action is required."
+    ],
+    [
+      "The previous task state and audit context remain available. No new external action is requested at this time. The conversation will continue when a new task or action is required."
+    ],
+    [
+      "The previous task state and audit context remain available. No new external action is requested at this time. The conversation will continue when a new task or action is required."
+    ],
+    [
+      "The previous task state and audit context remain available. No new external action is requested at this time. The conversation will continue when a new task or action is required."
+    ],
+    [
+      "The previous task state and audit context remain available. No new external action is requested at this time. The conversation will continue when a new task or action is required."
+    ]
+  ]
+}

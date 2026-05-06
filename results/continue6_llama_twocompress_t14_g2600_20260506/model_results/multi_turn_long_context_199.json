@@ -1,0 +1,102 @@
+{
+  "id": "multi_turn_long_context_199",
+  "result": [
+    [
+      [
+        {
+          "get_flight_cost": "{\"travel_from\": \"LAX\", \"travel_to\": \"JFK\", \"travel_date\": \"2026-04-15\", \"travel_class\": \"business\"}"
+        }
+      ],
+      [
+        {
+          "book_flight": "{\"access_token\": \"abc123xyz\", \"card_id\": \"card_123456789\", \"travel_date\": \"2026-04-15\", \"travel_from\": \"LAX\", \"travel_to\": \"JFK\", \"travel_class\": \"business\"}"
+        }
+      ],
+      "The cost of the flight from Los Angeles to New York on the morning of April 15th, 2026, in business class is $1200. The flight has been booked using the provided access token and card ID, and the booking ID is 3426812. The transaction ID for this booking is 45451592. The booking history includes multiple previous bookings made by the user, with details such as flight number, departure and destination cities, travel class, date, and cost."
+    ],
+    [
+      [
+        {
+          "retrieve_invoice": "{\"access_token\": \"abc123xyz\", \"booking_id\": \"3426812\"}"
+        }
+      ],
+      [
+        {
+          "retrieve_invoice": "{\"access_token\": \"abc123xyz\", \"booking_id\": \"3426812\"}"
+        }
+      ],
+      [
+        {
+          "retrieve_invoice": "{\"access_token\": \"abc123xyz\", \"booking_id\": \"3426812\"}"
+        }
+      ],
+      [
+        {
+          "retrieve_invoice": "{\"access_token\": \"abc123xyz\", \"booking_id\": \"3426812\"}"
+        }
+      ],
+      [
+        {
+          "retrieve_invoice": "{\"access_token\": \"abc123xyz\", \"booking_id\": \"3426812\"}"
+        }
+      ],
+      "The booking ID provided does not match any existing bookings in the system. Please verify the booking ID and try again."
+    ],
+    [
+      [
+        {
+          "contact_customer_support": "{\"booking_id\": \"3426812\", \"message\": \"I faced challenges during the booking process. The booking ID provided does not match any existing bookings in the system. I need assistance with this issue.\"}"
+        }
+      ],
+      [
+        {
+          "contact_customer_support": "{\"booking_id\": \"3426812\", \"message\": \"I faced challenges during the booking process. The booking ID provided does not match any existing bookings in the system. I need assistance with this issue.\"}"
+        }
+      ],
+      "The booking ID provided does not match any existing bookings in the system. Please verify the booking ID and try again."
+    ],
+    [
+      [
+        {
+          "message_login": "{\"user_id\": \"USR001\"}"
+        }
+      ],
+      [
+        {
+          "send_message": "{\"receiver_id\": \"USR003\", \"message\": \"Update on flight issue and customer support contact.\"}"
+        }
+      ],
+      "You have been logged in as USR001, and a message has been sent to Catherine (USR003) with the sender ID 'MichaelTpss' and the message 'Update on flight issue and customer support contact.'."
+    ],
+    [
+      "The responses sent following the communications regarding the flight issue are as follows:\n\n1. The cost of the flight from Los Angeles to New York on the morning of April 15th, 2026, in business class is $1200.\n2. The flight has been booked using the provided access token and card ID, and the booking ID is 3426812.\n3. The transaction ID for this booking is 45451592.\n4. The booking history includes multiple previous bookings made by the user, with details such as flight number, departure and destination cities, travel class, date, and cost.\n5. The booking ID provided does not match any existing bookings in the system. Please verify the booking ID and try again.\n6. The user has been logged in as USR001, and a message has been sent to Catherine (USR003) with the sender ID 'MichaelTpss' and the message 'Update on flight issue and customer support contact.'.\n\nThese responses provide an update on the flight issue and the communication with customer support, as well as the booking details and history."
+    ],
+    [
+      "The previous task state and audit context remain available. No new external action is requested, and no tools need to be called unless a previous tool call is still unresolved. The context is being maintained as per the instructions."
+    ],
+    [
+      "The previous task state and audit context remain available. No new external action is requested, and no tools need to be called unless a previous tool call is still unresolved. The context is being maintained as per the instructions."
+    ],
+    [
+      "The previous task state and audit context remain available. No new external action is requested, and no tools need to be called unless a previous tool call is still unresolved. The context is being maintained as per the instructions."
+    ],
+    [
+      "The previous task state and audit context remain available. No new external action is requested, and no tools need to be called unless a previous tool call is still unresolved. The context is being maintained as per the instructions."
+    ],
+    [
+      "The previous task state and audit context remain available. No new external action is requested, and no tools need to be called unless a previous tool call is still unresolved. The context is being maintained as per the instructions."
+    ],
+    [
+      "The previous task state and audit context remain available. No new external action is requested, and no tools need to be called unless a previous tool call is still unresolved. The context is being maintained as per the instructions."
+    ],
+    [
+      "The previous task state and audit context remain available. No new external action is requested, and no tools need to be called unless a previous tool call is still unresolved. The context is being maintained as per the instructions."
+    ],
+    [
+      "The previous task state and audit context remain available. No new external action is requested, and no tools need to be called unless a previous tool call is still unresolved. The context is being maintained as per the instructions."
+    ],
+    [
+      "The previous task state and audit context remain available. No new external action is requested, and no tools need to be called unless a previous tool call is still unresolved. The context is being maintained as per the instructions."
+    ]
+  ]
+}
