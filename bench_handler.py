@@ -924,9 +924,9 @@ class BFCLLongContextSemiPrefillBench:
                 ]
 
             if state["step_idx"] == 0:
+                state["messages"].extend(current_turn_message)
                 if turn_idx > 0:
                     self._maybe_compress(state)
-                state["messages"].extend(current_turn_message)
                 state["turn_traces"].append(
                     {
                         "turn": turn_idx,

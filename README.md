@@ -75,7 +75,7 @@ cd /root/bfcl_long_context_sp_bench
 /usr/bin/python3 dataset_rewrite.py \
   --model Llama-3.3-70B-Instruct \
   --initial-target-tokens 26000 \
-  --turn-growth-tokens 700 \
+  --turn-growth-tokens 2600 \
   --min-turns 6
 ```
 
@@ -91,7 +91,7 @@ sample_ids.json
 
 - 保留原始 BFCL task、tools、initial_config。
 - 在第一轮 user message 后追加 varied audit/context block，使 message + tool schema 初始估算接近 26k，低于 30k threshold。
-- 在后续 turn 中追加较小 context block，让上下文随 turn 增长。
+- 在后续 turn 中追加约 2600 token 的 context block，使 boundary compression 的 C1 更容易落在 2000-3000 token。
 - 对原始 turn 数小于 6 的样本，追加 no-op context-maintenance turn，用于稳定 `P <= 1/5` 或 `P <= 1/6` 的分母。
 - 该增强数据用于 overhead/trigger 研究，不等同于官方 BFCL accuracy 数据。
 

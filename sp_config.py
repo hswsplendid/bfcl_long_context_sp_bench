@@ -79,10 +79,10 @@ P_TARGET_1_6 = 1.0 / 6.0
 
 # Dataset augmentation defaults. The initial target includes message + tool
 # schema tokens; it stays below 30000 so turn 1 can enter the model. The per-turn
-# growth target is deliberately modest so compression usually appears every 5-6
-# inference steps, after real tool-result growth is added.
+# growth target is close to the primary C1 budget so the current turn can form
+# a 2000-3000 token retained segment when boundary compression triggers.
 AUGMENT_INITIAL_TARGET_TOKENS = 26000
-AUGMENT_TURN_GROWTH_TOKENS = 700
+AUGMENT_TURN_GROWTH_TOKENS = 2600
 AUGMENT_MIN_TURNS = 6
 AUGMENT_MAX_SAMPLES = 0
 AUGMENT_SEED = 20260505

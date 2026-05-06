@@ -1,0 +1,22 @@
+{
+  "output": "data/BFCL_v4_multi_turn_long_context_sp_111_c1target.json",
+  "samples": 1,
+  "preview": [
+    {
+      "id": "multi_turn_long_context_111",
+      "turns": 6,
+      "tool_schema_tokens_est": 4531,
+      "first_turn_message_tokens_est": 21509,
+      "all_user_message_tokens_est": 34886,
+      "model": "Llama-3.3-70B-Instruct"
+    }
+  ],
+  "target": {
+    "context_window": 32000,
+    "threshold": 30000,
+    "c1_min": 2000,
+    "c1_max": 3000,
+    "p_max_1_5": 0.2,
+    "p_max_1_6": 0.16666666666666666
+  }
+}
