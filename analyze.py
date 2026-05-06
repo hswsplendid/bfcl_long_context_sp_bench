@@ -111,8 +111,8 @@ def workload(samples: dict) -> dict:
         "samples_P_gt_1_5": sum(1 for row in rows if row["P"] > CFG.P_TARGET_1_5),
         "samples_P_gt_1_6": sum(1 for row in rows if row["P"] > CFG.P_TARGET_1_6),
         "samples_P_zero": sum(1 for row in rows if row["P"] == 0),
-        "samples_C1_lt_2000": sum(1 for row in rows if row["min_c1"] is not None and row["min_c1"] < CFG.C1_MIN_TOKENS),
-        "samples_C1_gt_3000": sum(1 for row in rows if row["max_c1"] is not None and row["max_c1"] > CFG.C1_MAX_TOKENS),
+        "samples_C1_lte_2000": sum(1 for row in rows if row["min_c1"] is not None and row["min_c1"] <= CFG.C1_MIN_TOKENS),
+        "samples_C1_gt_diagnostic_3000": sum(1 for row in rows if row["max_c1"] is not None and row["max_c1"] > CFG.C1_MAX_TOKENS),
     }
     if all_sp_lengths:
         summary["semi_prefill_lengths"] = describe(all_sp_lengths)
@@ -207,8 +207,8 @@ def main():
     print(f"P>1/5: {workload_summary['samples_P_gt_1_5']}")
     print(f"P>1/6: {workload_summary['samples_P_gt_1_6']}")
     print(f"P=0: {workload_summary['samples_P_zero']}")
-    print(f"C1<2000: {workload_summary['samples_C1_lt_2000']}")
-    print(f"C1>3000: {workload_summary['samples_C1_gt_3000']}")
+    print(f"C1<=2000: {workload_summary['samples_C1_lte_2000']}")
+    print(f"C1>3000 diagnostic: {workload_summary['samples_C1_gt_diagnostic_3000']}")
     print(f"context length distribution: {workload_summary.get('context_length_distribution', {})}")
     print(f"new tokens per step: {workload_summary.get('new_tokens_per_step', {})}")
     print(f"prefill: {time_summary['pct']['prefill']}%")

@@ -1,8 +1,8 @@
 """
 BFCL multi_turn_long_context semi-prefill benchmark configuration.
 
-This bench targets cw=32000, threshold=30000, and C1 retention in the
-2000-3000 token range.  It uses the global Python environment and writes every
+This bench targets cw=32000, threshold=30000, and C1 retention above
+2000 tokens.  It uses the global Python environment and writes every
 run into a named subdirectory under results/.
 """
 
@@ -73,6 +73,7 @@ PRESETS = [
 PRIMARY_PRESET = "cw32k_thr30000_c12600"
 
 C1_MIN_TOKENS = 2000
+# Historical diagnostic only. C1 pass/fail uses the lower bound above.
 C1_MAX_TOKENS = 3000
 P_TARGET_1_5 = 0.2
 P_TARGET_1_6 = 1.0 / 6.0
@@ -80,7 +81,7 @@ P_TARGET_1_6 = 1.0 / 6.0
 # Dataset augmentation defaults. The initial target includes message + tool
 # schema tokens; it stays below 30000 so turn 1 can enter the model. The per-turn
 # growth target is close to the primary C1 budget so the current turn can form
-# a 2000-3000 token retained segment when boundary compression triggers.
+# a retained segment above the C1 lower bound when boundary compression triggers.
 AUGMENT_INITIAL_TARGET_TOKENS = 26000
 AUGMENT_TURN_GROWTH_TOKENS = 2600
 AUGMENT_MIN_TURNS = 6

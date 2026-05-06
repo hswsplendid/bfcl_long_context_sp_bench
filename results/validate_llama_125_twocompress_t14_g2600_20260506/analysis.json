@@ -1,0 +1,224 @@
+{
+  "run_dir": "results/validate_llama_125_twocompress_t14_g2600_20260506",
+  "workload": {
+    "summary": {
+      "n_samples": 1,
+      "turns": {
+        "min": 14,
+        "max": 14,
+        "mean": 14,
+        "median": 14
+      },
+      "steps": {
+        "min": 20,
+        "max": 20,
+        "mean": 20,
+        "median": 20
+      },
+      "tool_calls": {
+        "min": 6,
+        "max": 6,
+        "mean": 6,
+        "median": 6
+      },
+      "compressions": {
+        "min": 2,
+        "max": 2,
+        "mean": 2,
+        "median": 2
+      },
+      "P": {
+        "min": 0.1,
+        "max": 0.1,
+        "mean": 0.1,
+        "median": 0.1
+      },
+      "max_prompt_tokens": {
+        "min": 30411,
+        "max": 30411,
+        "mean": 30411,
+        "median": 30411
+      },
+      "context_length_distribution": {
+        "min": 8114,
+        "max": 30411,
+        "mean": 18157.25,
+        "median": 17204.0,
+        "p25": 12775.0,
+        "p75": 23193.0
+      },
+      "new_tokens_per_step": {
+        "min": 29,
+        "max": 64,
+        "mean": 44.9,
+        "median": 42.0,
+        "p25": 42.0,
+        "p75": 50.0
+      },
+      "mean_delta_per_step": {
+        "min": -249.11,
+        "max": -249.11,
+        "mean": -249.11,
+        "median": -249.11
+      },
+      "churn_ratio_mean": {
+        "min": 0.8385,
+        "max": 0.8385,
+        "mean": 0.839,
+        "median": 0.839
+      },
+      "samples_P_le_1_5": 1,
+      "samples_P_le_1_6": 1,
+      "samples_P_gt_1_5": 0,
+      "samples_P_gt_1_6": 0,
+      "samples_P_zero": 0,
+      "samples_C1_lt_2000": 0,
+      "samples_C1_gt_3000": 1,
+      "semi_prefill_lengths": {
+        "min": 3055,
+        "max": 5736,
+        "mean": 4395.5,
+        "median": 4395.5,
+        "n_events": 2
+      }
+    },
+    "per_sample": [
+      {
+        "id": "multi_turn_long_context_125",
+        "turns": 14,
+        "steps": 20,
+        "tool_calls": 6,
+        "compressions": 2,
+        "P": 0.1,
+        "context_lengths": [
+          26393,
+          30411,
+          8114,
+          10838,
+          10961,
+          12530,
+          15236,
+          15354,
+          15471,
+          18182,
+          18270,
+          20988,
+          23704,
+          26421,
+          29138,
+          10795,
+          13510,
+          16226,
+          18943,
+          21660
+        ],
+        "new_tokens_per_step": [
+          46,
+          29,
+          61,
+          64,
+          50,
+          35,
+          50,
+          50,
+          33,
+          58,
+          44,
+          42,
+          42,
+          42,
+          42,
+          42,
+          42,
+          42,
+          42,
+          42
+        ],
+        "prompt_token_deltas": [
+          4018,
+          -22297,
+          2724,
+          123,
+          1569,
+          2706,
+          118,
+          117,
+          2711,
+          88,
+          2718,
+          2716,
+          2717,
+          2717,
+          -18343,
+          2715,
+          2716,
+          2717,
+          2717
+        ],
+        "max_prompt_tokens": 30411,
+        "mean_new_tokens_per_step": 44.9,
+        "mean_delta_per_step": -249.11,
+        "churn_ratio_mean": 0.8385,
+        "min_c1": 2705,
+        "max_c1": 5390,
+        "semi_prefill_count": 2,
+        "semi_prefill_lengths": [
+          3055,
+          5736
+        ],
+        "semi_prefill_events": [
+          {
+            "turn": 1,
+            "step": 0,
+            "tokens": 3055,
+            "c1_tokens": 2705
+          },
+          {
+            "turn": 9,
+            "step": 0,
+            "tokens": 5736,
+            "c1_tokens": 5390
+          }
+        ]
+      }
+    ]
+  },
+  "time_breakdown": {
+    "aggregate": {
+      "prefill_ms": 18976.53,
+      "semi_prefill_ms": 16996.86,
+      "summary_gen_ms": 60833.0,
+      "incremental_ms": 237033.53000000003,
+      "decode_ms": 49.309999999999995,
+      "total_ms": 333889.23,
+      "pct": {
+        "prefill": 5.68,
+        "semi_prefill": 23.31,
+        "semi_prefill_io": 5.09,
+        "summary_gen": 18.22,
+        "incremental": 70.99,
+        "decode": 0.01
+      }
+    },
+    "per_sample": [
+      {
+        "id": "multi_turn_long_context_125",
+        "prefill_ms": 18976.53,
+        "semi_prefill_ms": 16996.86,
+        "summary_gen_ms": 60833.0,
+        "incremental_ms": 237033.53,
+        "decode_ms": 49.31,
+        "total_ms": 333889.23,
+        "semi_prefill_total_ms": 77829.86,
+        "pct": {
+          "prefill": 5.68,
+          "semi_prefill": 23.31,
+          "semi_prefill_io": 5.09,
+          "summary_gen": 18.22,
+          "incremental": 70.99,
+          "decode": 0.01
+        }
+      }
+    ]
+  }
+}

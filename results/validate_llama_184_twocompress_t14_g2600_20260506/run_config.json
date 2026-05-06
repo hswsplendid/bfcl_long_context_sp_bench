@@ -1,0 +1,20 @@
+{
+  "model": "Llama-3.3-70B-Instruct",
+  "model_path": "/root/share/models/Llama-3.3-70B-Instruct",
+  "data_file": "data/BFCL_v4_multi_turn_long_context_sp_125_174_184_196_twocompress_t14_g2600.json",
+  "proxy_url": "http://localhost:6003/v1",
+  "preset": {
+    "name": "cw32k_thr30000_c12600",
+    "context_window": 32000,
+    "reserve_tokens": 2000,
+    "keep_recent_tokens": 2600,
+    "summary_max_tokens": 1024,
+    "threshold": 30000
+  },
+  "targets": {
+    "p_max_1_5": 0.2,
+    "p_max_1_6": 0.16666666666666666,
+    "c1_min_tokens": 2000,
+    "c1_max_tokens": 3000
+  }
+}

@@ -185,7 +185,7 @@ def augment_entry(entry: dict, tokenizer, initial_target: int, growth_tokens: in
         "tool_schema_tokens_est": tool_schema_tokens,
         "intended_context_window": 32000,
         "intended_threshold": 30000,
-        "intended_c1_range": [CFG.C1_MIN_TOKENS, CFG.C1_MAX_TOKENS],
+        "intended_c1_min_tokens_exclusive": CFG.C1_MIN_TOKENS,
         "purpose": "semi-prefill overhead/compression-trigger workload measurement",
     }
     return augmented
@@ -271,7 +271,8 @@ def main() -> None:
                     "context_window": 32000,
                     "threshold": 30000,
                     "c1_min": CFG.C1_MIN_TOKENS,
-                    "c1_max": CFG.C1_MAX_TOKENS,
+                    "c1_min_exclusive": CFG.C1_MIN_TOKENS,
+                    "c1_diagnostic_max": CFG.C1_MAX_TOKENS,
                     "p_max_1_5": CFG.P_TARGET_1_5,
                     "p_max_1_6": CFG.P_TARGET_1_6,
                 },

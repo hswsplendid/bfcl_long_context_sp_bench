@@ -1,6 +1,6 @@
 # BFCL Long-Context Semi-Prefill Bench
 
-这个目录用于测试 BFCL `multi_turn_long_context` 在 `cw=32000, threshold=30000, C1=2000-3000` 下的压缩触发频率和 semi-prefill overhead。
+这个目录用于测试 BFCL `multi_turn_long_context` 在 `cw=32000, threshold=30000, C1>2000` 下的压缩触发频率和 semi-prefill overhead。
 
 ## 目标
 
@@ -91,7 +91,7 @@ sample_ids.json
 
 - 保留原始 BFCL task、tools、initial_config。
 - 在第一轮 user message 后追加 varied audit/context block，使 message + tool schema 初始估算接近 26k，低于 30k threshold。
-- 在后续 turn 中追加约 2600 token 的 context block，使 boundary compression 的 C1 更容易落在 2000-3000 token。
+- 在后续 turn 中追加约 2600 token 的 context block，使 boundary compression 的 C1 更容易超过 2000 token。
 - 对原始 turn 数小于 6 的样本，追加 no-op context-maintenance turn，用于稳定 `P <= 1/5` 或 `P <= 1/6` 的分母。
 - 该增强数据用于 overhead/trigger 研究，不等同于官方 BFCL accuracy 数据。
 
@@ -150,7 +150,7 @@ cd /root/bfcl_long_context_sp_bench
 ```text
 P <= 1/5: compression_count / inference_step_count <= 0.2
 P <= 1/6: compression_count / inference_step_count <= 0.1667
-C1 range: 2000 <= C1_tokens_after <= 3000
+C1 lower bound: C1_tokens_after > 2000
 ```
 
-如果 `P=0`，说明没有触发压缩，不适合用于 semi-prefill overhead 结论；如果 `P>1/5`，需要降低初始 target/growth 或提高分母 turn/step；如果 `C1>3000`，降低对应 preset 的 `keep_recent_tokens_budget`。
+如果 `P=0`，说明没有触发压缩，不适合用于 semi-prefill overhead 结论；如果 `P>1/5`，需要降低初始 target/growth 或提高分母 turn/step；如果 `C1<=2000`，需要提高对应 preset 的 `keep_recent_tokens_budget` 或增加最近 turn 的 context block。

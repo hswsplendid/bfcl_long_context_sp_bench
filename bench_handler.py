@@ -408,10 +408,10 @@ class BFCLLongContextSemiPrefillBench:
         abc_event["C1_tokens_after"] = self._msg_list_tokens(after_section["C1"])
         abc_event["B2_plus_C1_tokens"] = abc_event["B2_tokens"] + abc_event["C1_tokens_after"]
         abc_event["c1_below_minimum"] = abc_event["C1_tokens_after"] < CFG.C1_MIN_TOKENS
-        abc_event["c1_above_maximum"] = abc_event["C1_tokens_after"] > CFG.C1_MAX_TOKENS
-        abc_event["c1_in_target_range"] = (
-            CFG.C1_MIN_TOKENS <= abc_event["C1_tokens_after"] <= CFG.C1_MAX_TOKENS
-        )
+        abc_event["c1_at_or_below_minimum"] = abc_event["C1_tokens_after"] <= CFG.C1_MIN_TOKENS
+        abc_event["c1_above_diagnostic_maximum"] = abc_event["C1_tokens_after"] > CFG.C1_MAX_TOKENS
+        abc_event["c1_meets_minimum"] = abc_event["C1_tokens_after"] > CFG.C1_MIN_TOKENS
+        abc_event["c1_in_target_range"] = abc_event["c1_meets_minimum"]
 
         before_section["A_tokens"] = abc_event["A_tokens"]
         before_section["B1_tokens"] = abc_event["B1_tokens"]

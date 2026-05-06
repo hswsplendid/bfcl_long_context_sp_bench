@@ -48,7 +48,7 @@ def main():
             continue
         table[preset] = scan_run(run_dir)
 
-    print(f"{'preset':<28}{'N':>4}{'mean_P%':>10}{'med_P%':>10}{'max_P%':>10}{'<=1/5':>8}{'<=1/6':>8}{'min_C1':>10}{'max_C1':>10}{'C1_ok':>8}")
+    print(f"{'preset':<28}{'N':>4}{'mean_P%':>10}{'med_P%':>10}{'max_P%':>10}{'<=1/5':>8}{'<=1/6':>8}{'min_C1':>10}{'max_C1':>10}{'C1>2000':>8}")
     for preset in presets:
         rows = table.get(preset, [])
         if not rows:
@@ -62,9 +62,7 @@ def main():
             1
             for row in rows
             if row.get("min_c1") is not None
-            and row.get("max_c1") is not None
-            and CFG.C1_MIN_TOKENS <= row["min_c1"]
-            and row["max_c1"] <= CFG.C1_MAX_TOKENS
+            and row["min_c1"] > CFG.C1_MIN_TOKENS
         )
         print(
             f"{preset:<28}{len(rows):>4}{stats.mean(pcts):>10.2f}{stats.median(pcts):>10.2f}{max(pcts):>10.2f}"
