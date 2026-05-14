@@ -118,6 +118,7 @@ def write_run_meta(
     model_key: str,
     data_file: Path,
     compression_enabled: bool = True,
+    max_turns: int | None = None,
 ) -> None:
     dirs = run_dirs(run_name)
     dirs["base"].mkdir(parents=True, exist_ok=True)
@@ -130,6 +131,7 @@ def write_run_meta(
                 "proxy_url": CFG.PROXY_URL,
                 "preset": preset,
                 "compression_enabled": compression_enabled,
+                "max_turns": max_turns,
                 "targets": {
                     "p_max_1_5": CFG.P_TARGET_1_5,
                     "p_max_1_6": CFG.P_TARGET_1_6,
@@ -152,14 +154,24 @@ def run_once(
     model_key: str,
     data_file: Path,
     compression_enabled: bool = True,
+    max_turns: int | None = None,
 ) -> None:
     preset = resolve_preset(preset_name)
-    write_run_meta(run_name, preset, sample_ids, model_key, data_file, compression_enabled=compression_enabled)
+    write_run_meta(
+        run_name,
+        preset,
+        sample_ids,
+        model_key,
+        data_file,
+        compression_enabled=compression_enabled,
+        max_turns=max_turns,
+    )
     bench = BFCLLongContextSemiPrefillBench(
         run_name,
         preset,
         model_key=model_key,
         compression_enabled=compression_enabled,
+        max_turns=max_turns,
     )
     dataset = load_dataset(data_file)
 
@@ -196,6 +208,7 @@ def cmd_search(args):
             model_key=args.model,
             data_file=args.data_file,
             compression_enabled=not args.disable_compression,
+            max_turns=args.max_turns,
         )
 
 
@@ -214,6 +227,7 @@ def cmd_full(args):
         model_key=args.model,
         data_file=args.data_file,
         compression_enabled=not args.disable_compression,
+        max_turns=args.max_turns,
     )
 
 
@@ -231,6 +245,7 @@ def main():
         run_parser.add_argument("--turn-growth-tokens", type=int, default=CFG.AUGMENT_TURN_GROWTH_TOKENS)
         run_parser.add_argument("--min-turns", type=int, default=CFG.AUGMENT_MIN_TURNS)
         run_parser.add_argument("--disable-compression", action="store_true", help="Run without context compression for isolation checks")
+        run_parser.add_argument("--max-turns", type=int, default=None, help="Limit each sample to the first N turns")
 
     search = sub.add_parser("search")
     add_common(search)

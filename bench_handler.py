@@ -168,10 +168,12 @@ class BFCLLongContextSemiPrefillBench:
         preset: dict,
         model_key: str = CFG.DEFAULT_MODEL,
         compression_enabled: bool = True,
+        max_turns: int | None = None,
     ):
         self.run_name = run_name
         self.preset = preset
         self.compression_enabled = compression_enabled
+        self.max_turns = max_turns
         self.model_key = model_key
         self.model_info = CFG.MODEL_REGISTRY[model_key]
         self.model_path = self.model_info["model_path"]
@@ -896,6 +898,9 @@ class BFCLLongContextSemiPrefillBench:
             state["resume_count"] = state.get("resume_count", 0) + 1
             state.setdefault("official_model_result", [])
             return state
+        total_turns = len(test_entry.get("question", []))
+        if self.max_turns is not None:
+            total_turns = min(total_turns, max(0, self.max_turns))
         return {
             "sample_id": test_entry["id"],
             "turn_idx": 0,
@@ -911,7 +916,7 @@ class BFCLLongContextSemiPrefillBench:
             "cumulative_tool_calls": 0,
             "previous_summary": None,
             "last_was_compression": False,
-            "total_turns": len(test_entry.get("question", [])),
+            "total_turns": total_turns,
             "resume_count": 0,
         }
 
